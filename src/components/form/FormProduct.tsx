@@ -91,7 +91,7 @@ export const FormProduct = () => {
         <div className="flex gap-4 items-center">
           <Button
             classes="btn btn-primary"
-            text={editedProduct?.id ? "Edit" : "Create"}
+            text={editedProduct?.id ? "Save" : "Create"}
           />
           <Button classes="btn btn-error" text="Cancel" onClick={CloseModal} />
         </div>

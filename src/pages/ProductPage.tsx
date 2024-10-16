@@ -4,7 +4,6 @@ import { ProductsList } from "../components/products/ProductsList";
 import { CreateCategory } from "../components/form/CreateCategory";
 import { FormProduct } from "../components/form/FormProduct";
 import { useProductsContext } from "../context/ProductsProvider";
-import { Categories } from "../components/products/Categories";
 import { FilterCategory } from "../components/FilterCategory";
 
 export const ProductPage = () => {
@@ -12,9 +11,9 @@ export const ProductPage = () => {
 
   return (
     <>
-      <div className="py-1">
+      <div className="py-1 overflow-hidden">
         <div className="flex lg:hidden items-center ">
-          <FilterCategory />
+          <FilterCategory mode={"edit"} />
           <Input
             type="search"
             classes="w-[90%] m input md:input-md bg-base-200"
@@ -22,15 +21,17 @@ export const ProductPage = () => {
             placeholder="Search product"
           />
         </div>
-        <Categories mode={"edit"} />
         <div className="space-y-2 ">
-          <div className="flex justify-between items-center py-2 border-b-2  ">
+          <div className="flex justify-between items-center py-2 px-2 lg:px-0 border-b-2  ">
             <h2 className="text-lg lg:text-2xl font-semibold">Product list</h2>
-            <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-row  lg:w-[45%]  gap-2 items-center">
+              <FilterCategory mode={"edit"} classes="hidden lg:block" />
+
               <Input
                 type="search"
-                classes="hidden lg:block input md:input-md bg-gray-200"
+                classes="w-[90%] hidden lg:block input md:input-md bg-base-200"
                 defaultValue={""}
+                placeholder="Search product"
               />
               <Button
                 text="Add category"
@@ -47,7 +48,7 @@ export const ProductPage = () => {
 
           <ProductsList
             mode="edit"
-            classes="min-h-[70dvh] lg:h-[60dvh] grid-cols-1 p-2 sm:grid-cols-2  lg:grid-cols-4 w-full gap-2"
+            classes="min-h-[70dvh] lg:h-[80dvh] grid-cols-1 p-2 sm:grid-cols-2  lg:grid-cols-4 w-full gap-2"
           />
         </div>
       </div>

@@ -32,12 +32,11 @@ export const useProducts = () => {
       };
       await setDoc(newCategoryRef, {
         ...newCategory,
-
         id: newCategoryRef.id,
       });
 
       Swal.fire({
-        title: "Categoria agregada con exito 😁",
+        title: "Category successfully added 😁",
         icon: "success",
       });
     } catch (error) {
@@ -67,7 +66,7 @@ export const useProducts = () => {
       await setDoc(newProductRef, newProduct);
 
       Swal.fire({
-        title: "Producto agregado con éxito 😁",
+        title: "Product successfully added 😁",
         icon: "success",
       });
     } catch (error) {
@@ -94,6 +93,7 @@ export const useProducts = () => {
       return null;
     }
   };
+
   const EditProduct = async (data: IProduct, id: string) => {
     try {
       setLoading(true);
@@ -121,13 +121,13 @@ export const useProducts = () => {
       }
 
       Swal.fire({
-        title: "Producto editado con éxito 😁",
+        title: "Product successfully edited 😁",
         icon: "success",
       });
     } catch (error) {
       console.log(error);
       Swal.fire({
-        title: "Error al editar el producto",
+        title: "Error editing the product",
         icon: "error",
       });
     } finally {
@@ -138,12 +138,12 @@ export const useProducts = () => {
   const DeleteProduct = async (id: string, imageUrl: string) => {
     try {
       const result = await Swal.fire({
-        title: "¿Estás seguro?",
-        text: "No podrás revertir esto",
+        title: "Are you sure?",
+        text: "You won't be able to revert this",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
+        confirmButtonText: "Yes, delete it",
+        cancelButtonText: "Cancel",
       });
 
       if (result.isConfirmed) {
@@ -155,14 +155,14 @@ export const useProducts = () => {
         }
 
         Swal.fire({
-          title: "Producto eliminado con éxito 😁",
+          title: "Product successfully deleted 😁",
           icon: "success",
         });
       }
     } catch (error) {
       console.log(error);
       Swal.fire({
-        title: "Error al eliminar el producto",
+        title: "Error deleting the product",
         icon: "error",
       });
     } finally {
@@ -173,12 +173,12 @@ export const useProducts = () => {
   const DeleteCategory = async (id: string) => {
     try {
       const result = await Swal.fire({
-        title: "¿Estás seguro?",
-        text: "No podrás revertir esto",
+        title: "Are you sure?",
+        text: "You won't be able to revert this",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
+        confirmButtonText: "Yes, delete it",
+        cancelButtonText: "Cancel",
       });
 
       if (result.isConfirmed) {
