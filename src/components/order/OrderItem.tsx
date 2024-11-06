@@ -16,8 +16,7 @@ export const OrderItem = ({
   quantity,
   imageUrl,
   id,
-}:
-CartItemProps) => {
+}: CartItemProps) => {
   const { DeleteOrderItem } = useOrderContext();
 
   return (
@@ -30,10 +29,10 @@ CartItemProps) => {
           height={68}
           className="rounded-md max-w-[68px] aspect-square"
         />
-        <div>
-          <h3 className="font-medium text-gray-900 capitalize truncate">
+        <div className="max-w-[180px]">
+          <h4 className="font-medium text-ellipsis overflow-hidden whitespace-nowrap text-gray-900 capitalize ">
             {name}
-          </h3>
+          </h4>
           <p className="text-sm text-gray-500">
             ${price.toFixed(2)} x {quantity}
           </p>
@@ -42,7 +41,6 @@ CartItemProps) => {
       <Button
         onClick={() => {
           DeleteOrderItem(id);
-          // setCount(0);
         }}
         classes="p-2 text-gray-400 hover:text-gray-500"
       >

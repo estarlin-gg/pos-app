@@ -23,6 +23,7 @@ export interface IProductsContext {
   setEditedProduct: React.Dispatch<React.SetStateAction<IProduct>>;
   editedProduct: IProduct;
   CloseModal: () => void;
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 //OrdersProvider

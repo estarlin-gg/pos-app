@@ -6,9 +6,10 @@ import { ProductsList } from "../components/products/ProductsList";
 import { FilterCategory } from "../components/FilterCategory";
 import { Button } from "../components/Button";
 import { BiDish } from "react-icons/bi";
+import { useProductsContext } from "../context/ProductsProvider";
 export const MenuPage = () => {
   const [openOrder, setOpenOrder] = useState(false);
-
+  const { handleSearch } = useProductsContext();
   const handleOpenOrder = () => setOpenOrder(!openOrder);
 
   return (
@@ -23,6 +24,7 @@ export const MenuPage = () => {
               <div className="flex -order-1 w-full lg:order-none lg:w-[40%] items-center">
                 <FilterCategory />
                 <Input
+                  onChange={handleSearch}
                   type="search"
                   classes="w-[90%]  m input md:input-md bg-base-200"
                   defaultValue={""}

@@ -37,34 +37,42 @@ export const HistoryPage = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {invoices.map((invoice) => {
-              const formattedDate = invoice.createdAt
-                ? invoice.createdAt.toDate().toLocaleDateString()
-                : "N/A";
+          <tbody className="">
+            {invoices.length <= 0 ? (
+              <tr>
+                <td colSpan={5} className="text-xl font-bold text-center p-8">
+                  Empty
+                </td>
+              </tr>
+            ) : (
+              invoices.map((invoice) => {
+                const formattedDate = invoice.createdAt
+                  ? invoice.createdAt.toDate().toLocaleDateString()
+                  : "N/A";
 
-              return (
-                <tr key={invoice.id} className="border-b hover:bg-gray-50">
-                  <td className="p-4">{formattedDate}</td>
-                  <td className="p-4">{invoice.id}</td>
-                  <td className="p-4">{invoice.customer}</td>
-                  <td className="p-4 text-right">
-                    ${invoice.totalPay.toFixed(2)}
-                  </td>
-                  <td className="p-4">
-                    <div className="flex justify-end space-x-2">
-                      <button
-                        onClick={() => handleView(invoice.pdfUrl)}
-                        className="p-1 text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
-                        aria-label={`View invoice ${invoice.id}`}
-                      >
-                        <BsEye className="h-5 w-5" />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+                return (
+                  <tr key={invoice.id} className="border-b hover:bg-gray-50">
+                    <td className="p-4">{formattedDate}</td>
+                    <td className="p-4">{invoice.id}</td>
+                    <td className="p-4">{invoice.customer}</td>
+                    <td className="p-4 text-right">
+                      ${invoice.totalPay.toFixed(2)}
+                    </td>
+                    <td className="p-4">
+                      <div className="flex justify-end space-x-2">
+                        <button
+                          onClick={() => handleView(invoice.pdfUrl)}
+                          className="p-1 text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+                          aria-label={`View invoice ${invoice.id}`}
+                        >
+                          <BsEye className="h-5 w-5" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>

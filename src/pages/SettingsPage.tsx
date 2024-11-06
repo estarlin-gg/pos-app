@@ -1,6 +1,6 @@
 
 export const SettingsPage = () => {
   return (
-    <div>SettingsPage</div>
+    <div>Coming soon! 😁😁😁😁😁😁😁😁</div>
   )
 }

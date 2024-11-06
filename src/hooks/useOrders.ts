@@ -10,6 +10,7 @@ export const useOrders = () => {
   const { credentials, setLoading } = useAuth();
   const [orders, setOrders] = useState<IOrder[]>([]);
   const [customer, setCustomer] = useState("unknown");
+  // const [inventory,setInventory] = useState();
 
   const handleCustomer = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomer(e.target.value);

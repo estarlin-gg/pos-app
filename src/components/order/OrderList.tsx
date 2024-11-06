@@ -55,7 +55,7 @@ export const OrderList = ({ classes, handleOpenOrder }: OrderList) => {
 
   return (
     <div
-      className={`${classes} relative z-50 h-screen bg-white bg-  border-l p-4`}
+      className={`${classes} relative z-50 h-[100dvh] bg-white bg-  border-l p-4`}
     >
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Order Detail</h2>
@@ -81,8 +81,8 @@ export const OrderList = ({ classes, handleOpenOrder }: OrderList) => {
           classes="border-2 border-gray-300 input-sm"
         />
       </div>
-      <div className="divider"></div>
-      <div className="overflow-auto no-scrollbar flex flex-col gap-2 h-[50%] lg:h-[38%] pb-2">
+      <div className="divider m-2"></div>
+      <div className="overflow-auto no-scrollbar flex flex-col gap-2 h-[45%] lg:h-[42%] pb-2">
         {orders.length > 0 ? (
           orders.map((o) => (
             <OrderItem
@@ -98,7 +98,7 @@ export const OrderList = ({ classes, handleOpenOrder }: OrderList) => {
           <p className="text-center mt-4">There are no products in the order.</p>
         )}
       </div>
-      <div className="absolute bottom-0 lg:bottom-14 bg-slate-50 px-4 py-2 left-0 right-0 flex flex-col">
+      <div className="absolute bottom-2 lg:bottom-14 bg-slate-50 px-4 py-2 left-0 right-0 flex flex-col">
         <div className="space-y-1">
           <h4 className="flex justify-between text-sm font-medium capitalize text-black ">
             <span className="text-gray-500 ">Subtotal</span> $
@@ -116,7 +116,7 @@ export const OrderList = ({ classes, handleOpenOrder }: OrderList) => {
 
             <Button
               classes="w-full btn btn-primary"
-              text={`Pay ${payWithTax}`}
+              text={`Pay $${payWithTax}`}
               onClick={handleGenerateAndUploadPDF}
               disabled={orders.length <= 0 ? true : false}
             />

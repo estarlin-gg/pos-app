@@ -7,7 +7,7 @@ import { useProductsContext } from "../context/ProductsProvider";
 import { FilterCategory } from "../components/FilterCategory";
 
 export const ProductPage = () => {
-  const { modal, setModal } = useProductsContext();
+  const { modal, setModal,handleSearch } = useProductsContext();
 
   return (
     <>
@@ -15,6 +15,7 @@ export const ProductPage = () => {
         <div className="flex lg:hidden items-center ">
           <FilterCategory mode={"edit"} />
           <Input
+          onChange={handleSearch}
             type="search"
             classes="w-[90%] m input md:input-md bg-base-200"
             defaultValue={""}

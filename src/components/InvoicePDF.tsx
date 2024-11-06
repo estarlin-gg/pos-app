@@ -3,52 +3,61 @@ import { IOrder } from "../models";
 
 const styles = StyleSheet.create({
   page: {
-    padding: 5,
-    width: 40,
-    height: 40,
-    fontSize: 9,
-  },
-  title: {
+    padding: 20,
     fontSize: 12,
+    fontFamily: "Helvetica",
+  },
+  header: {
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 20,
     textAlign: "center",
   },
   section: {
-    marginBottom: 3,
+    marginBottom: 15,
   },
-  tableHeader: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#000",
-    paddingBottom: 5,
+  sectionTitle: {
+    fontSize: 14,
+    fontWeight: "bold",
+    marginBottom: 5,
   },
-  tableRow: {
-    flexDirection: "row",
-    paddingVertical: 1,
-  },
-  tableCell: {
-    width: "60%",
-    textAlign: "left",
-    fontSize: 9,
-  },
-  tableCellRight: {
-    width: "40%",
-    textAlign: "right",
-    fontSize: 9,
-  },
-  footer: {
-    marginTop: 5,
-    borderTopWidth: 1,
-    borderTopColor: "#000",
-    paddingTop: 3,
-  },
-  footerRow: {
+  row: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 2,
+    marginBottom: 5,
   },
-  textBold: { fontWeight: "bold" },
+  column: {
+    flexDirection: "column",
+  },
+  bold: {
+    fontWeight: "bold",
+  },
+  itemName: {
+    width: "60%",
+  },
+  itemQuantity: {
+    width: "20%",
+    textAlign: "center",
+  },
+  itemPrice: {
+    width: "20%",
+    textAlign: "right",
+  },
+  total: {
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderTopColor: "#000",
+    paddingTop: 10,
+  },
+  totalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 5,
+  },
+  totalText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
 
 interface InvoiceProps {
@@ -69,40 +78,39 @@ export const InvoicePDF = ({
   invoiceID,
 }: InvoiceProps) => (
   <Document>
-    <Page style={styles.page}>
-      <Text style={styles.title}>Factura #{invoiceID}</Text>{" "}
-      <View style={styles.section}>
-        <Text>Cliente: {customer || "No especificado"}</Text>
-      </View>
-      <View style={styles.section}>
-        <View style={styles.tableHeader}>
-          <Text style={styles.tableCell}>Product x Cantidad</Text>
-          <Text style={styles.tableCellRight}>Total</Text>
-        </View>
+    <Page size={{ width: 240, height: "auto" }} style={styles.page}>
+      <Text style={styles.header}>Invoive #{invoiceID}</Text>
 
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Customer:</Text>
+        <Text>{customer}</Text>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Items:</Text>
         {orders.map((o) => (
-          <View key={o.id} style={styles.tableRow}>
-            <Text style={styles.tableCell}>
-              {o.name} x {o.quantity}
-            </Text>
-            <Text style={styles.tableCellRight}>
+          <View key={o.id} style={styles.row}>
+            <Text style={styles.itemName}>{o.name}</Text>
+            <Text style={styles.itemQuantity}>{o.quantity}</Text>
+            <Text style={styles.itemPrice}>
               ${(o.price * o.quantity).toFixed(2)}
             </Text>
           </View>
         ))}
       </View>
-      <View style={styles.footer}>
-        <View style={styles.footerRow}>
-          <Text style={styles.textBold}>Subtotal:</Text>
+
+      <View style={styles.total}>
+        <View style={styles.totalRow}>
+          <Text style={styles.bold}>Subtotal:</Text>
           <Text>${totalPay.toFixed(2)}</Text>
         </View>
-        <View style={styles.footerRow}>
-          <Text style={styles.textBold}>Tax (10%):</Text>
+        <View style={styles.totalRow}>
+          <Text style={styles.bold}>Tax (10%):</Text>
           <Text>${tax.toFixed(2)}</Text>
         </View>
-        <View style={styles.footerRow}>
-          <Text style={styles.textBold}>Total:</Text>
-          <Text>${payWithTax.toFixed(2)}</Text>
+        <View style={styles.totalRow}>
+          <Text style={styles.totalText}>Total:</Text>
+          <Text style={styles.totalText}>${payWithTax.toFixed(2)}</Text>
         </View>
       </View>
     </Page>
