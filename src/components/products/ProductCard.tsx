@@ -44,12 +44,12 @@ export const ProductCard = ({
   };
 
   return (
-    <div className="flex flex-col border rounded-xl max-h-[350px]  p-4 gap-2 ">
-      <figure className="w-full">
+    <div className="flex flex-col border rounded-xl max-h-[350px]  p-2 gap-2 ">
+      <figure className="w-full flex justify-center">
         <img
           src={image}
           alt={name}
-          className="w-full min-h-[180px] max-h-[180px] rounded-lg"
+          className="w-[95%] min-h-[200px] max-h-[200px] rounded-lg"
         />
       </figure>
       <div className="">

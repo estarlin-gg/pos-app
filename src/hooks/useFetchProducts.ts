@@ -27,7 +27,6 @@ const useFetchProducts = () => {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-    console.log(e.target.value);
   };
 
   useEffect(() => {
@@ -69,7 +68,7 @@ const useFetchProducts = () => {
   }, [credentials?.uid]);
 
   useEffect(() => {
-    let productFiltered = products;
+    let productFiltered = [...products];
 
     if (category && category !== "all") {
       productFiltered = productFiltered.filter((p) => p.category === category);
@@ -81,6 +80,11 @@ const useFetchProducts = () => {
       );
     }
     setFilteredP(productFiltered);
+
+    return () => {
+      // setFilteredP([...products]);
+
+    };
   }, [category, search, products]);
 
   return {

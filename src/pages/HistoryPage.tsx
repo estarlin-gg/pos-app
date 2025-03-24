@@ -1,5 +1,6 @@
 import { BsEye } from "react-icons/bs";
 import { useOrderContext } from "../context/OrdersProvider";
+import { Input } from "../components/form/Input";
 
 export const HistoryPage = () => {
   const { invoices } = useOrderContext();
@@ -15,7 +16,10 @@ export const HistoryPage = () => {
 
   return (
     <div className="container mx-auto py-4 px-4">
-      <h1 className="text-2xl font-bold mb-4">Invoice History</h1>
+     <div className="flex justify-between items-center my-2">
+     <h1 className="text-2xl font-bold mb-4">Invoice History</h1>
+     <Input type="search" classes="border bg-gray-200" />
+     </div>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse bg-white shadow-sm">
           <thead>
